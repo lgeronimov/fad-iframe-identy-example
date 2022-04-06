@@ -11,6 +11,7 @@ const EVENT_MODULE = {
   MODULE_READY: "MODULE_READY",
 };
 
+// optional, by default use LF4
 const DETECTION_MODES = {
   L4F: 'L4F',
   LEFT_INDEX: 'LEFT_INDEX',
@@ -27,7 +28,7 @@ const DETECTION_MODES = {
 };
 
 
-
+// optional, the app has default legends and colors
 const CUSTOMIZATION = {
   fadCustomization: {
     colors: {
