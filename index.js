@@ -139,9 +139,11 @@ class ResponseEvent {
 }
 
 class Result {
-  fingers = [];
-  constructor(fingers) {
-    this.fingers = fingers;
+  leftHand;
+  rightHand;
+  constructor(data) {
+    this.leftHand = data.leftHand;
+    this.rightHand = data.rightHand;
   }
 }
 
