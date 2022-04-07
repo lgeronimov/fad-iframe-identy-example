@@ -129,6 +129,7 @@ const ERROR_CODE = {
   ERROR_REQUEST_EXPIRED: 604
 };
 
+// models
 class ResponseEvent {
   event;
   data;
