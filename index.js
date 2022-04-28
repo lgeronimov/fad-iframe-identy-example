@@ -29,86 +29,121 @@ const DETECTION_MODES = {
 
 
 // optional, the app has default legends and colors
-const CUSTOMIZATION = {
-  fadCustomization: {
-    colors: {
-      primary: "#A70635",
-      secondary: "#A70635",
-      tertiary: "#363636",
-    },
-    buttons: {
-      primary: {
-        backgroundColor: "#A70635",
-        backgroundColorDisabled: "#dcdcdc",
-        labelColor: "#ffffff",
-        labelColorDisabled: "#8e8e8e",
-        border: "1px solid #A70635",
-      },
-    },
+const CONFIGURATION = {
+  views: {
+    instructions: true
   },
-  moduleCustomization: {
-    legends: {
-      identy: {
-        FEEDBACK_RETRY: "Algo salió mal, favor de reintentar",
-        FEEDBACK_SEARCHING: 'Buscando...',
-        FEEDBACK_INSIDE_GUIDE: 'Por favor esté dentro de la guía',
-        FEEDBACK_PLEASE_HOLD: 'Mantenga ',
-        FEEDBACK_PLEASE_HOLD_FLASH: 'Mantenga para el flash',
-        FEEDBACK_PLEASE_MOVE: 'Por favor mueva los dedos ligeramente, mejora el enfoque',
-        FEEDBACK_PLEASE_MOVE_2: 'Espere al enfoque',
-        FEEDBACK_PLEASE_MOVE_IOS_2: 'Vuelve a colocar los dedos <br> para mejorar el enfoque.',
-        FEEDBACK_NO_FINGERS: "Buscando mano {0}",
-        FEEDBACK_STABLE: 'Por favor no se mueva',
-        FEEDBACK_HAND_FAR: 'Acerca la mano',
-        FEEDBACK_HAND_CLOSE: 'Mueva y aleje la mano',
-        FEEDBACK_CAMERA_ACQUIRING_FAILED: 'No se puede acceder a la cámara, permita permiso o reintente la captura',
-        FEEDBACK_INITIALIZATION: 'iniciando',
-        FEEDBACK_NEXT_DETECTION: '¿Continuar a la siguiente mano?',
-        FEEDBACK_ORIENTATION_NOT_SUPPORTED: 'Solo se admite el modo Retrato',
-        FEEDBACK_CAPTURING: 'Capturando',
-        FEEDBACK_CAPTURED: 'Capturada',
-        FEEDBACK_BLURRY: "Calidad borrosa, reintentar captura",
-        FEEDBACK_BLURRY_NO_FLASH: "La iluminación no era adecuada, vuelva a intentarlo en un lugar más iluminado.",
-        FEEDBACK_RETRY_QUALITY: "Mala calidad, reintentar captura",
-        FEEDBACK_RETRY_QUALITY_NO_FLASH: 'La iluminación no era la adecuada. Vuelva a intentarlo en una ubicación mejor.',
-        FEEDBACK_RETRY_ERROR: 'Mala calidad, reintentar captura',
-        FEEDBACK_FINGER_QUALITY: 'Calidad del dedo, reintentar captura',
-        FEEDBACK_LICENCE_INVALID: 'Licencia invalida',
-        FEEDBACK_DIALOG_CLOSED: '',
-        FEEDBACK_CAPTURE_TIMEOUT: 'Mano no detectada, ¿Reintentar?',
-        FEEDBACK_PROCESSING: 'procesando',
-        FEEDBACK_BUTTON_CLOSE: "Cerrar",
-        FEEDBACK_BUTTON_RETRY: "Reintentar",
-        FEEDBACK_TRAINING_BUTTON_NEXT: 'Siguiente',
-        FEEDBACK_TRAINING_LABEL: 'No volver a mostrar',
-        FEEDBACK_NO_FLASH: 'Asegúrate de estar en un lugar iluminado',
-        FEEDBACK_TRAINING_DIALOG_CLOSED: 'Proceso cancelado',
-        FEEDBACK_DETECTION_ERROR: 'Ocurrió un error de detección',
-        FEEDBACK_CHANGE_LOCATION: 'Cambie de lugar, para mejorar el enfoque',
-        FEEDBACK_CHANGE_LOCATION_IOS: "Cambie de ubicación, con mejor luz",
-        ERROR_BROWSER_NOT_SUPPORTED: 'Navegador no compatible. Actualice su navegador.',
-        ERROR_URL_NOT_SUPPORTED: 'URL no admitida, se requiere que la URL sea https o "localhost"',
-        ERROR_WEBRTC_NOT_SUPPORTED: 'Webrtc no soportado',
-        ERROR_DETECTION_CANCELLED: 'Próxima detección cancelada',
-        ERROR_MODEL_FAIL: "Error en la detección del modelo",
-        ERROR_INTERNAL_SERVER: "Error Interno del Servidor",
-        ERROR_DEVICE_NOT_SUPPORTED: 'Device not supported',
-        ERROR_REQUEST_EXPIRED: 'La solicitud ha caducado, inténtalo de nuevo.',
-        ERROR_DECRYPTION_FAILED: 'Error de integridad',
-        ERROR_SERVER_CONNECTION_FAILURE: 'Server connection failure',
-        FEEDBACK_ENROLLED: "Registrado correctamente",
-        FEEDBACK_ALREADY_ENROLLED: 'Id de sesión ya registrado',
-        BUTTON: {
-          OK: 'Ok',
-          CANCEL: 'Cancelar'
+  customization: {
+    fadCustomization: {
+      colors: {
+        primary: "#A70635",
+        secondary: "#A70635",
+        tertiary: "#363636",
+      },
+      buttons: {
+        primary: {
+          backgroundColor: "#A70635",
+          backgroundColorDisabled: "#dcdcdc",
+          labelColor: "#ffffff",
+          labelColorDisabled: "#8e8e8e",
+          border: "1px solid #A70635",
         },
-        HAND: {
-          LEFT: 'izquierda',
-          RIGHT: 'derecha'
-        }
       },
+      fonts: {
+        title: {
+          fontSize: '25px',
+          fontFamily: 'system-ui'
+        },
+        subtitle: {
+          fontSize: '17px',
+          fontFamily: 'system-ui'
+        },
+        content: {
+          fontSize: '15px',
+          fontFamily: 'system-ui'
+        },
+        informative: {
+          fontSize: '12px',
+          fontFamily: 'system-ui'
+        },
+        button: {
+          fontSize: '17px',
+          fontFamily: 'system-ui'
+        }
+      }
+    },
+    moduleCustomization: {
+      legends: {
+        identy: {
+          FEEDBACK_RETRY: "Algo salió mal, favor de reintentar",
+          FEEDBACK_SEARCHING: 'Buscando...',
+          FEEDBACK_INSIDE_GUIDE: 'Por favor esté dentro de la guía',
+          FEEDBACK_PLEASE_HOLD: 'Mantenga ',
+          FEEDBACK_PLEASE_HOLD_FLASH: 'Mantenga para el flash',
+          FEEDBACK_PLEASE_MOVE: 'Por favor mueva los dedos ligeramente, mejora el enfoque',
+          FEEDBACK_PLEASE_MOVE_2: 'Espere al enfoque',
+          FEEDBACK_PLEASE_MOVE_IOS_2: 'Vuelve a colocar los dedos <br> para mejorar el enfoque.',
+          FEEDBACK_NO_FINGERS: "Buscando mano {0}",
+          FEEDBACK_STABLE: 'Por favor no se mueva',
+          FEEDBACK_HAND_FAR: 'Acerca la mano',
+          FEEDBACK_HAND_CLOSE: 'Mueva y aleje la mano',
+          FEEDBACK_CAMERA_ACQUIRING_FAILED: 'No se puede acceder a la cámara, permita permiso o reintente la captura',
+          FEEDBACK_INITIALIZATION: 'iniciando',
+          FEEDBACK_NEXT_DETECTION: '¿Continuar a la siguiente mano?',
+          FEEDBACK_ORIENTATION_NOT_SUPPORTED: 'Solo se admite el modo Retrato',
+          FEEDBACK_CAPTURING: 'Capturando',
+          FEEDBACK_CAPTURED: 'Capturada',
+          FEEDBACK_BLURRY: "Calidad borrosa, reintentar captura",
+          FEEDBACK_BLURRY_NO_FLASH: "La iluminación no era adecuada, vuelva a intentarlo en un lugar más iluminado.",
+          FEEDBACK_RETRY_QUALITY: "Mala calidad, reintentar captura",
+          FEEDBACK_RETRY_QUALITY_NO_FLASH: 'La iluminación no era la adecuada. Vuelva a intentarlo en una ubicación mejor.',
+          FEEDBACK_RETRY_ERROR: 'Mala calidad, reintentar captura',
+          FEEDBACK_FINGER_QUALITY: 'Calidad del dedo, reintentar captura',
+          FEEDBACK_LICENCE_INVALID: 'Licencia invalida',
+          FEEDBACK_DIALOG_CLOSED: '',
+          FEEDBACK_CAPTURE_TIMEOUT: 'Mano no detectada, ¿Reintentar?',
+          FEEDBACK_PROCESSING: 'procesando',
+          FEEDBACK_BUTTON_CLOSE: "Cerrar",
+          FEEDBACK_BUTTON_RETRY: "Reintentar",
+          FEEDBACK_TRAINING_BUTTON_NEXT: 'Siguiente',
+          FEEDBACK_TRAINING_LABEL: 'No volver a mostrar',
+          FEEDBACK_NO_FLASH: 'Asegúrate de estar en un lugar iluminado',
+          FEEDBACK_TRAINING_DIALOG_CLOSED: 'Proceso cancelado',
+          FEEDBACK_DETECTION_ERROR: 'Ocurrió un error de detección',
+          FEEDBACK_CHANGE_LOCATION: 'Cambie de lugar, para mejorar el enfoque',
+          FEEDBACK_CHANGE_LOCATION_IOS: "Cambie de ubicación, con mejor luz",
+          ERROR_BROWSER_NOT_SUPPORTED: 'Navegador no compatible. Actualice su navegador.',
+          ERROR_URL_NOT_SUPPORTED: 'URL no admitida, se requiere que la URL sea https o "localhost"',
+          ERROR_WEBRTC_NOT_SUPPORTED: 'Webrtc no soportado',
+          ERROR_DETECTION_CANCELLED: 'Próxima detección cancelada',
+          ERROR_MODEL_FAIL: "Error en la detección del modelo",
+          ERROR_INTERNAL_SERVER: "Error Interno del Servidor",
+          ERROR_DEVICE_NOT_SUPPORTED: 'Device not supported',
+          ERROR_REQUEST_EXPIRED: 'La solicitud ha caducado, inténtalo de nuevo.',
+          ERROR_DECRYPTION_FAILED: 'Error de integridad',
+          ERROR_SERVER_CONNECTION_FAILURE: 'Server connection failure',
+          FEEDBACK_ENROLLED: "Registrado correctamente",
+          FEEDBACK_ALREADY_ENROLLED: 'Id de sesión ya registrado',
+          BUTTON: {
+            OK: 'Ok',
+            CANCEL: 'Cancelar'
+          },
+          HAND: {
+            LEFT: 'izquierda',
+            RIGHT: 'derecha'
+          }
+        },
+      },
+      legendsInstructions: {
+        title: 'Huellas',
+        subtitle: 'Tomaremos unas capturas de tus huellas',
+        buttonNext: 'Comenzar',
+      }
     },
   },
+  pathDependencies: {
+    imageDirectory: 'ASSETS_URL'
+  }
 };
 
 // errors
@@ -200,7 +235,7 @@ function initModule() {
   const iframe = document.getElementById("fad-iframe-identy");
   iframe.contentWindow.postMessage(
     new ResponseEvent(EVENT_MODULE.INIT_MODULE, {
-      customization: CUSTOMIZATION,
+      configuration: CONFIGURATION,
       detectionModes: [DETECTION_MODES.L4F,]
     }),
     iframe.src
