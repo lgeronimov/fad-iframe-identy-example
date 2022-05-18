@@ -16,7 +16,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   font-family: system-ui;
-  margin: 5%;
+  padding: 5%;
   max-width: 100%;
   word-break: break-all;
 }

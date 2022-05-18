@@ -9,6 +9,7 @@ const EVENT_MODULE = {
   PROCESS_ERROR: "PROCESS_ERROR",
   PROCESS_COMPLETED: "PROCESS_COMPLETED",
   MODULE_READY: "MODULE_READY",
+  SKIP_FINGERPRINTS: "SKIP_FINGERPRINTS"
 };
 
 // optional, by default use LF4
@@ -143,7 +144,7 @@ const CONFIGURATION = {
     },
   },
   pathDependencies: {
-    imageDirectory: 'ASSETS_URL'
+    // imageDirectory: 'ASSETS_URL/'
   }
 };
 
@@ -196,25 +197,29 @@ window.addEventListener("message", (message) => {
       // only informative
       console.log("Process init");
     } else if (message.data.event === EVENT_MODULE.PROCESS_ERROR) { // PRROCESS_ERROR
-      alert(JSON.stringify(message.data.data));
+        console.log(JSON.stringify(message.data.data));
+    } else if (message.data.event === EVENT_MODULE.SKIP_FINGERPRINTS) { // SKIP_FINGERPRINTS
+        console.log('Skip Fingerprints');
     } else if (message.data.event === EVENT_MODULE.PROCESS_COMPLETED) { // PROCESS_COMPLETED
-      alert("Process completed");
+        console.log("Process completed");
+        const result = new Result(message.data.data);
       // show result example
-
       const containerResult = document.getElementById("container-result");
       const containerIframe = document.getElementById("container-iframe-identy");
 
       containerIframe.style.display = "none";
       containerResult.style.display = "grid";
       console.log(message.data.data);
-      const fingers = ['index', 'little', 'middle', 'ring'];
+      const fingers = ['left_index', 'left_little', 'left_middle', 'left_ring','right_index', 'right_little', 'right_middle', 'right_ring'];
       for (const finger of fingers) {
+        const fingerPosition = finger.split('_');
+        const fingerData = result[`${fingerPosition[0]}Hand`][fingerPosition[1]];
         const fingerImage = document.getElementById(`image_${finger}`);
         const fingerName = document.getElementById(`name_${finger}`);
         const fingerWsq = document.getElementById(`wsq_${finger}`);
-        fingerImage.src = "data:image/png;base64, " + message.data.data.leftHand[finger].image;
-        fingerName.innerHTML = finger
-        fingerWsq.innerHTML = message.data.data.leftHand[finger].wsq;
+        fingerImage.src = "data:image/png;base64, " + fingerData.image;
+        fingerName.innerHTML = finger.replace("_", " ");
+        fingerWsq.innerHTML = fingerData.wsq;
       }
 
     }
@@ -237,7 +242,7 @@ function initModule() {
   iframe.contentWindow.postMessage(
     new ResponseEvent(EVENT_MODULE.INIT_MODULE, {
       configuration: CONFIGURATION,
-      detectionModes: [DETECTION_MODES.L4F,]
+      detectionModes: [DETECTION_MODES.L4F,DETECTION_MODES.R4F]
     }),
     iframe.src
   );
