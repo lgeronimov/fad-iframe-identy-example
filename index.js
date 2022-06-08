@@ -11,7 +11,8 @@ const EVENT_MODULE = {
   MODULE_READY: "MODULE_READY",
   SKIP_FINGERPRINTS: "SKIP_FINGERPRINTS"
 };
-
+// optional, by default use 30000 miliseconds
+const CAPTURE_TIMEOUT = 30000;
 // optional, by default use LF4
 const DETECTION_MODES = {
   L4F: 'L4F',
@@ -242,7 +243,8 @@ function initModule() {
   iframe.contentWindow.postMessage(
     new ResponseEvent(EVENT_MODULE.INIT_MODULE, {
       configuration: CONFIGURATION,
-      detectionModes: [DETECTION_MODES.L4F,DETECTION_MODES.R4F]
+      detectionModes: [DETECTION_MODES.L4F,DETECTION_MODES.R4F],
+      captureTimeout: CAPTURE_TIMEOUT
     }),
     iframe.src
   );
